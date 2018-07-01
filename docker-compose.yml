@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    image: "mongo:latest"
+    expose:
+     - "27017"
+    command: "--smallfiles"
+
+  web:
+    image: "sizijay/dockerexercise:v2"
+    ports:
+     - "5000:5000"
+    command: python app.py
+    links: 
+     - db:mongo
+    
+  
